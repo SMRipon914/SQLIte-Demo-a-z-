@@ -20,7 +20,7 @@ public class DatabaseSqlite extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("Create Table "+TABLE_NAME+ "(ID INTEGER PRIMARY KEY ,NAME TEXT,PhnNumber TEXT)");
+        db.execSQL("Create Table "+TABLE_NAME+ "(ID INTEGER PRIMARY KEY AUTOINCREMENT ,NAME TEXT,PhnNumber TEXT)");
     }
 
     @Override
@@ -29,10 +29,9 @@ public class DatabaseSqlite extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(String id,String name,String PhnNumber){
+    public boolean insertData(String name,String PhnNumber){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
-        contentValues.put(COL_1,id);
         contentValues.put(COL_2,name);
         contentValues.put(COL_3,PhnNumber);
         long results=db.insert(TABLE_NAME,null,contentValues);
@@ -44,10 +43,20 @@ public class DatabaseSqlite extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("select * from "+TABLE_NAME,null);
         return res;
     }
+    public boolean update(String id,String name,String PhnNumber){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put(COL_1,id);
+        contentValues.put(COL_2,name);
+        contentValues.put(COL_3,PhnNumber);
+        db.update(TABLE_NAME,contentValues,COL_1+"=?",new String[]{id});
+        return true;
+    }
 
     public void delete() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_NAME,null,null);
     }
+
 
 }

@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     EditText id,name,phnNum;
-    Button add,view,delete;
+    Button add,view,delete,updateid;
     DatabaseSqlite myDb;
 TextView textView;
     @Override
@@ -20,11 +20,13 @@ TextView textView;
         setContentView(R.layout.activity_main);
 
         initiateAll();
-        myDb=new DatabaseSqlite(this);
+        myDb=new DatabaseSqlite(this);//database class
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AddData();
+                clear();
+
             }
         });
         view.setOnClickListener(new View.OnClickListener() {
@@ -32,12 +34,23 @@ TextView textView;
             public void onClick(View v) {
 
                 ViewData();
+                clear();
+
             }
         });
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myDb.delete();
+                clear();
+
+            }
+        });
+        updateid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                update();
+                clear();
             }
         });
     }
@@ -49,7 +62,6 @@ TextView textView;
         textView.setText("");
         Cursor res=myDb.getAllData();
         if(res.getCount() == 0) {
-            // show message
             textView.setText("No Data Found");
             return;
         }
@@ -59,9 +71,9 @@ TextView textView;
             textView.append("Name:"+res.getString(1)+"\n");
             textView.append("Phone Number:"+res.getString(2)+"\n\n");
 
-
         }
     }
+
 
     @Override
     public void onBackPressed() {
@@ -69,13 +81,23 @@ TextView textView;
     }
 
     public void AddData() {
-        boolean isInsert=(myDb.insertData(id.getText().toString(),name.getText().toString(),phnNum.getText().toString()));
+        boolean isInsert=(myDb.insertData(name.getText().toString(),phnNum.getText().toString()));
         if (isInsert=true){
-            Toast.makeText(MainActivity.this,"Data insert",Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this,"Data insert successfull",Toast.LENGTH_SHORT).show();
         }
         else {
-            Toast.makeText(MainActivity.this,"Data not Insert",Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this,"Data Unsuccessfull",Toast.LENGTH_SHORT).show();
         }
+
+    } public void update() {
+        boolean isInsert=(myDb.update(id.getText().toString(),name.getText().toString(),phnNum.getText().toString()));
+        if (isInsert=true){
+            Toast.makeText(MainActivity.this,"Data Update successfull",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(MainActivity.this,"Data update unsuccessfull",Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void initiateAll(){
@@ -86,6 +108,12 @@ TextView textView;
         view=findViewById(R.id.View);
         textView=findViewById(R.id.textView);
         delete=findViewById(R.id.delete);
+        updateid=findViewById(R.id.updateid);
+    }
+    public void clear(){
+        id.setText("");
+        name.setText("");
+        phnNum.setText("");
     }
 
 }

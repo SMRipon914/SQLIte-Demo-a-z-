@@ -2,46 +2,94 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
+    android:background="#448AFF"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="MembeInfo"/>
+
     <EditText
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="id"
+        android:paddingLeft="10dp"
+        android:hint="id (will be autoincrement)"
+        android:background="#F0EDED"
+        android:textColor="#131212"
+        android:textSize="25sp"
         android:id="@+id/id" />
     <EditText
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="name"
+        android:paddingLeft="10dp"
+        android:background="#F0EDED"
+        android:textColor="#131212"
+        android:textSize="25sp"
         android:id="@+id/name"/>
     <EditText
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:background="#F0EDED"
+        android:textColor="#131212"
+        android:textSize="25sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="PhoneNumber"
+        android:paddingLeft="10dp"
         android:id="@+id/PhoneNumber" />
     <Button
-        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/addButton"
+        android:background="#EC4E4E"
         android:text="add"/>
     <Button
-        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/View"
+        android:background="#EC4E4E"
         android:text="View"/>
     <Button
-        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_width="match_parent"
+        android:background="#EC4E4E"
+        android:layout_height="wrap_content"
+        android:id="@+id/updateid"
+        android:text="Update"/>
+    <Button
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_width="match_parent"
+        android:background="#EC4E4E"
         android:layout_height="wrap_content"
         android:id="@+id/delete"
         android:text="Delete"/>
 <TextView
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="40dp"
+    android:layout_marginLeft="40dp"
+    android:layout_marginBottom="10dp"
     android:layout_width="match_parent"
+    android:background="#F0EDED"
+    android:textColor="#131212"
+    android:paddingLeft="10dp"
+    android:textSize="20sp"
     android:layout_height="match_parent"
     android:id="@+id/textView"/>
 
